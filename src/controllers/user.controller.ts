@@ -1,13 +1,22 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import prisma from "../lib/prisma.js";
 import logger from "../lib/logger.js";
+import { BadRequestError, UnauthorizedError } from "../utils/errors.js";
 
-export const getAllUser = async (req: Request, res: Response) => {
-    try {
-        logger.info("Users fetched successfully");
-        res.status(200).json([{name: 'hi'}, {name:"bye"}]);
-    } catch (error) {
-        logger.error("Error fetching users: ", error);
-        res.status(500).json({message: "Error fetching users"});
-    }
-}
+export const getUser = async (
+  req: Request,
+  _res: Response,
+  _next: NextFunction
+) => {
+  const { id } = req.params;
+  if (!id) throw BadRequestError("User ID is required");
+
+  // Simulate DB fetch
+  const user = {
+    id,
+    name: "Senil Mendapara",
+    email: "senil@example.com",
+  };
+
+  return user;
+};
