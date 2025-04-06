@@ -9,6 +9,9 @@ A minimal and extensible starter template for building backend services using:
 - dotenv-flow for environment configuration
 - Helmet & CORS for security
 - Nodemon for development
+- Centralized Error Handling
+- Controller Handler Wrapper
+- Service Layer Abstraction
 
 ---
 
@@ -68,26 +71,39 @@ npm run prisma:migrate
 
 ## 🔪 Available Scripts
 
-| Script             | Description                              |
-|--------------------|------------------------------------------|
-| `npm run dev`      | Starts dev server with `nodemon`         |
-| `npm run build`    | Compiles TypeScript to `dist/`           |
-| `npm start`        | Starts production server (from `dist/`)  |
-| `npm run prisma:migrate` | Runs dev migration                |
-| `npm run prisma:deploy`  | Deploys production-ready migration |
-| `npm run prisma:generate`| Regenerates Prisma client          |
+| Script                  | Description                              |
+|-------------------------|------------------------------------------|
+| `npm run dev`           | Starts dev server with `nodemon`         |
+| `npm run build`         | Compiles TypeScript to `dist/`           |
+| `npm start`             | Starts production server (from `dist/`)  |
+| `npm run prisma:migrate`| Runs dev migration                       |
+| `npm run prisma:deploy` | Deploys production-ready migration       |
+| `npm run prisma:generate`| Regenerates Prisma client               |
 
 ---
 
-## 💂 Folder Structure
+## 🪂 Features
+
+- ✅ **Centralized Error Handling** with custom error classes and middleware
+- ✅ **Controller Handler Wrapper** to reduce repetitive try-catch blocks
+- ✅ **Standardized API Responses** (`{ success, message, data }`)
+- ✅ **Service Layer Pattern** for separating business logic
+
+---
+
+## 👶 Folder Structure
 
 ```bash
 .
 ├── prisma/                # Prisma schema and migrations
 ├── src/
 │   ├── routes/            # Express routes
-│   ├── middleware/        # Custom middlewares
-│   ├── lib/logger.ts      # Winston logger setup
+│   ├── controllers/       # Controller logic
+│   ├── services/          # DB operations and business logic
+│   ├── middleware/        # Middlewares (logger, errorHandler, etc.)
+│   ├── types/             # Custom types and interfaces
+│   ├── utils/             # Helpers (errors, controller handler, etc.)
+│   ├── lib/               # Configs (logger, env loader)
 │   └── index.ts           # Entry point
 ├── dist/                  # Compiled output (ignored)
 ├── .env*                  # Environment files
@@ -97,7 +113,45 @@ npm run prisma:migrate
 
 ---
 
-## 🧠 Author
+## ✍️ Naming Conventions
+
+### 📁 File & Folder Naming
+
+| Type             | Convention     | Example                        |
+|------------------|----------------|--------------------------------|
+| Files            | kebab-case     | `user.controller.ts`           |
+| Folders          | kebab-case     | `user/`, `middleware/`, `lib/` |
+| Types/Interfaces | PascalCase     | `user.types.ts`                |
+| Configs          | kebab-case     | `db-config.ts`
+
+### 🧠 Function Naming
+
+| Use Case              | Convention  | Example                        |
+|-----------------------|-------------|--------------------------------|
+| Regular functions     | camelCase   | `getUserById`, `createUser`    |
+| Controller handlers   | camelCase   | `getUser`, `createUser`        |
+| Middleware functions  | camelCase   | `authGuard`, `requestLogger`   |
+| Express route handlers| camelCase   | `updateProfile`, `deleteUser`  |
+
+### 🧾 Variable Naming
+
+| Use Case         | Convention         | Example                    |
+|------------------|--------------------|----------------------------|
+| General variables| camelCase          | `user`, `userId`, `input`  |
+| Constants        | UPPER_SNAKE_CASE   | `MAX_LIMIT`, `JWT_SECRET`  |
+| Booleans         | camelCase + question| `isAdmin`, `hasPermission` |
+
+### 🎯 Class & Interface Naming
+
+| Type       | Convention | Example           |
+|------------|------------|-------------------|
+| Class      | PascalCase | `UserService`     |
+| Interface  | PascalCase | `User`, `PostDTO` |
+| Type Alias | PascalCase | `CreateUserInput` |
+
+---
+
+## 🤠 Author
 
 Made with ❤️ by **Senil Mendapara**
 
