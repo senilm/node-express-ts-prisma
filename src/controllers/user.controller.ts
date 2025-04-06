@@ -11,6 +11,8 @@ export const getUser = async (
   const { id } = req.params;
   if (!id) throw BadRequestError("User ID is required");
 
+  // await getUserById(id) -> Import from services
+
   // Simulate DB fetch
   const user = {
     id,
