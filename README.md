@@ -17,33 +17,53 @@ A minimal and extensible starter template for building backend services using:
 
 ## 📆 Tech Stack
 
-| Tool         | Description                          |
-|--------------|--------------------------------------|
-| Express      | Backend server                       |
-| TypeScript   | Strongly typed JavaScript            |
-| Prisma       | Next-gen Node.js ORM                 |
-| dotenv-flow  | Multi-env configuration (.env files) |
-| Winston      | Advanced logging                     |
-| Helmet       | HTTP header security                 |
-| CORS         | Cross-origin requests handler        |
-| Nodemon      | Auto-restarts server in dev          |
+| Tool        | Description                          |
+| ----------- | ------------------------------------ |
+| Express     | Backend server                       |
+| TypeScript  | Strongly typed JavaScript            |
+| Prisma      | Next-gen Node.js ORM                 |
+| dotenv-flow | Multi-env configuration (.env files) |
+| Winston     | Advanced logging                     |
+| Helmet      | HTTP header security                 |
+| CORS        | Cross-origin requests handler        |
+| Nodemon     | Auto-restarts server in dev          |
 
 ---
 
 ## ⚙️ Getting Started
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/express-prisma-ts
-cd express-prisma-ts
+git clone https://github.com/senilm/node-express-ts-prisma
+cd node-express-ts-prisma
 ```
 
-### 2. Install Dependencies
+### 2. Remove existing gt
+
+```bash
+rm -rf .git
+```
+
+### 3. Reinitialize git
+
+```bash
+git init
+git add .
+git commit -m "Initial commit from starter template"
+
+git remote add origin https://github.com/yourusername/my-new-backend.git
+git branch -M main
+git push -u origin main
+```
+
+### 3. Install Dependencies
+
 ```bash
 npm install
 ```
 
-### 3. Set Up Environment Variables
+### 5. Set Up Environment Variables
 
 Create environment files using `.env`, `.env.development`, `.env.production`, etc.
 
@@ -55,7 +75,7 @@ LOG_LEVEL=debug
 
 > dotenv-flow will automatically pick the correct `.env` based on the environment.
 
-### 4. Initialize Prisma
+### 6. Initialize Prisma
 
 ```bash
 npx prisma init
@@ -71,14 +91,14 @@ npm run prisma:migrate
 
 ## 🔪 Available Scripts
 
-| Script                  | Description                              |
-|-------------------------|------------------------------------------|
-| `npm run dev`           | Starts dev server with `nodemon`         |
-| `npm run build`         | Compiles TypeScript to `dist/`           |
-| `npm start`             | Starts production server (from `dist/`)  |
-| `npm run prisma:migrate`| Runs dev migration                       |
-| `npm run prisma:deploy` | Deploys production-ready migration       |
-| `npm run prisma:generate`| Regenerates Prisma client               |
+| Script                    | Description                             |
+| ------------------------- | --------------------------------------- |
+| `npm run dev`             | Starts dev server with `nodemon`        |
+| `npm run build`           | Compiles TypeScript to `dist/`          |
+| `npm start`               | Starts production server (from `dist/`) |
+| `npm run prisma:migrate`  | Runs dev migration                      |
+| `npm run prisma:deploy`   | Deploys production-ready migration      |
+| `npm run prisma:generate` | Regenerates Prisma client               |
 
 ---
 
@@ -117,34 +137,34 @@ npm run prisma:migrate
 
 ### 📁 File & Folder Naming
 
-| Type             | Convention     | Example                        |
-|------------------|----------------|--------------------------------|
-| Files            | kebab-case     | `user.controller.ts`           |
-| Folders          | kebab-case     | `user/`, `middleware/`, `lib/` |
-| Types/Interfaces | PascalCase     | `user.types.ts`                |
-| Configs          | kebab-case     | `db-config.ts`
+| Type             | Convention | Example                        |
+| ---------------- | ---------- | ------------------------------ |
+| Files            | kebab-case | `user.controller.ts`           |
+| Folders          | kebab-case | `user/`, `middleware/`, `lib/` |
+| Types/Interfaces | PascalCase | `user.types.ts`                |
+| Configs          | kebab-case | `db-config.ts`                 |
 
 ### 🧠 Function Naming
 
-| Use Case              | Convention  | Example                        |
-|-----------------------|-------------|--------------------------------|
-| Regular functions     | camelCase   | `getUserById`, `createUser`    |
-| Controller handlers   | camelCase   | `getUser`, `createUser`        |
-| Middleware functions  | camelCase   | `authGuard`, `requestLogger`   |
-| Express route handlers| camelCase   | `updateProfile`, `deleteUser`  |
+| Use Case               | Convention | Example                       |
+| ---------------------- | ---------- | ----------------------------- |
+| Regular functions      | camelCase  | `getUserById`, `createUser`   |
+| Controller handlers    | camelCase  | `getUser`, `createUser`       |
+| Middleware functions   | camelCase  | `authGuard`, `requestLogger`  |
+| Express route handlers | camelCase  | `updateProfile`, `deleteUser` |
 
 ### 🧾 Variable Naming
 
-| Use Case         | Convention         | Example                    |
-|------------------|--------------------|----------------------------|
-| General variables| camelCase          | `user`, `userId`, `input`  |
-| Constants        | UPPER_SNAKE_CASE   | `MAX_LIMIT`, `JWT_SECRET`  |
-| Booleans         | camelCase + question| `isAdmin`, `hasPermission` |
+| Use Case          | Convention           | Example                    |
+| ----------------- | -------------------- | -------------------------- |
+| General variables | camelCase            | `user`, `userId`, `input`  |
+| Constants         | UPPER_SNAKE_CASE     | `MAX_LIMIT`, `JWT_SECRET`  |
+| Booleans          | camelCase + question | `isAdmin`, `hasPermission` |
 
 ### 🎯 Class & Interface Naming
 
 | Type       | Convention | Example           |
-|------------|------------|-------------------|
+| ---------- | ---------- | ----------------- |
 | Class      | PascalCase | `UserService`     |
 | Interface  | PascalCase | `User`, `PostDTO` |
 | Type Alias | PascalCase | `CreateUserInput` |
@@ -160,4 +180,3 @@ Made with ❤️ by **Senil Mendapara**
 ## 🛠️ License
 
 [ISC](LICENSE)
-
